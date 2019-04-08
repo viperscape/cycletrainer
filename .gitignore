@@ -1,0 +1,4 @@
+node_modules
+*.dll
+*.exe
+cycletrainer-win32-x64
