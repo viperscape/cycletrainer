@@ -23,7 +23,7 @@ class Settings extends Component {
             <div>
                 <div>
                     Connected to Trainer
-                    <input type="checkbox" disabled={ this.state.connected }></input>
+                    <input type="checkbox" disabled={true} value={this.state.connected}></input>
                 </div>
                 <button onClick={ () => this.Restart() }>Restart Bluetooth</button>
             </div>
