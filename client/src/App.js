@@ -1,16 +1,32 @@
 import React, { Component } from 'react';
 import './App.css';
 
+import { CalcSpeed } from "./metrics";
+
 const { ipcRenderer } = window.require('electron');
 
 class App extends Component {
     constructor(props)
     {
         super(props);
-        this.state = {power: null, speed: null, revs: null};
+        this.state = { 
+            power: null, speed: null, revs: null, 
+            bikespeed: 0, distance: 0 
+        };
 
         let self = this;
         ipcRenderer.on("data", function(event, data) {
+            let mass = 80; // kgs
+            let gradient = 0.0; // degrees
+            data.bikespeed = CalcSpeed(9.80665, data.power, mass, gradient);
+            let wheelsize = 668; // 700c
+            let distance = (data.revs * wheelsize * Math.PI) * 0.000001; // kilometers
+            distance = distance.toFixed(2);
+            if (data.revs > self.state.revs)
+                data.distance = self.state.distance + distance;
+            else 
+                data.distance = distance;
+
             self.setState(data);
         });
     }
@@ -27,6 +43,8 @@ class App extends Component {
                 <div>Power {this.state.power}</div>
                 <div>Speed {this.state.speed}</div>
                 <div>Revs {this.state.revs}</div>
+                <div>Bike Speed {this.state.bikspeed}</div>
+                <div>Distance {this.state.distance}</div>
             </div>
             </div>
         );
