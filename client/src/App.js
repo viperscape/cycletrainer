@@ -41,8 +41,7 @@ class App extends Component {
             }
             <div>
                 <div>Power {this.state.power}</div>
-                <div>Speed {this.state.speed}</div>
-                <div>Revs {this.state.revs}</div>
+                <div>Cadence {this.state.speed}</div>
                 <div>Bike Speed {this.state.bikspeed}</div>
                 <div>Distance {this.state.distance}</div>
             </div>
