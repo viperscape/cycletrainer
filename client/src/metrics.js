@@ -18,7 +18,7 @@ function Newtonsmethod(aero, hw, tr, tran, p)
 
 function CalcSpeed(gravity, power, mass_person, gradient) {
 	let mass_bike = 10; // 22 lbs
-	let mass = mass_person;
+	let mass = mass_person + mass_bike;
 
 	let frontal_cd = 0.45;
 	let air_r = 0.325 * frontal_cd * 1.225;
