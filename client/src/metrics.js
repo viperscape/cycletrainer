@@ -10,21 +10,28 @@ class Metrics extends Component {
             bikespeed: 0, distance: 0 
 		};
 		
-        let self = this;
-        this.props.bus.on("data", function(event, data) {
-            let mass = 80; // kgs
-            let gradient = 0.0; // degrees 
-            data.bikespeed = CalcSpeed(9.80665, data.power, mass, gradient);
-            let wheelsize = 668; // 700c
-            let distance = (data.revs * wheelsize * Math.PI) * 0.000001; // kilometers
-            distance = distance.toFixed(2);
-            if (data.revs > self.state.revs)
-                data.distance = self.state.distance + distance;
-            else 
-                data.distance = distance;
+		this.CalcMetrics = this.CalcMetrics.bind(this);
+        this.props.bus.on("data", this.CalcMetrics);
+    }
 
-            self.setState(data);
-        });
+	CalcMetrics (_, data) {
+		let mass = 80; // kgs
+		let gradient = 0.0; // degrees 
+		data.bikespeed = CalcSpeed(9.80665, data.power, mass, gradient);
+		let wheelsize = 668; // 700c
+		let distance = (data.revs * wheelsize * Math.PI) * 0.0000001; // kilometers
+		distance = distance.toFixed(2);
+		if (data.revs > this.state.revs)
+			data.distance = this.state.distance + distance;
+		else 
+			data.distance = distance;
+
+		this.setState(data);
+	}
+
+	componentWillUnmount()
+    {
+        this.props.bus.removeListener("data", this.CalcMetrics);
     }
 
     render() {

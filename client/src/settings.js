@@ -6,10 +6,14 @@ class Settings extends Component {
         super(props);
         
         this.state = { connected: false };
-        let self = this;
-        this.props.bus.on("data", function () {
-            self.setState({ connected: true });
-        });
+
+        this.Connected = this.Connected.bind(this);
+        this.props.bus.on("data", this.Connected);
+    }
+
+    Connected()
+    {
+        this.setState({ connected: true });
     }
 
     Restart()
@@ -18,12 +22,17 @@ class Settings extends Component {
         this.setState({connected:false});
     }
 
+    componentWillUnmount()
+    {
+        this.props.bus.removeListener("data", this.Connected);
+    }
+
     render() {
         return (
             <div>
                 <div>
                     Connected to Trainer
-                    <input type="checkbox" disabled={true} value={this.state.connected}></input>
+                    <input type="checkbox" disabled={true} checked={this.state.connected}></input>
                 </div>
                 <button onClick={ () => this.Restart() }>Restart Bluetooth</button>
             </div>
