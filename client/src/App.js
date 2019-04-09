@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 
 import { CalcSpeed } from "./metrics";
+import Settings from "./settings";
 
 const { ipcRenderer } = window.require('electron');
 
@@ -9,7 +10,7 @@ class App extends Component {
     constructor(props)
     {
         super(props);
-        this.state = { 
+        this.state = {
             power: null, speed: null, revs: null, 
             bikespeed: 0, distance: 0 
         };
@@ -46,7 +47,7 @@ class App extends Component {
                 <div>Distance {this.state.distance}</div>
             </div>
 
-            <div><button onClick={ () => ipcRenderer.send("BLE_Restart") }>Restart Bluetooth</button></div>
+            <Settings bus={ipcRenderer}/>
             </div>
         );
     }

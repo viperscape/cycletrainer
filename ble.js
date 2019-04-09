@@ -4,7 +4,7 @@ class BLE
 {
     constructor(bus)
     {
-        this.Bus = bus;
+        this.bus = bus;
         this.Spawn();
     }
 
@@ -14,7 +14,7 @@ class BLE
 
         this.BLE.stdout.on('data', function (data) {
             let d = JSON.parse(data.toString());
-            this.Bus.send("data", d);
+            this.bus.send("data", d);
         }.bind(this));
 
         this.BLE.stderr.on('data', (data) => {
