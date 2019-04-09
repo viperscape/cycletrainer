@@ -46,6 +46,8 @@ class App extends Component {
                 <div>Bike Speed {this.state.bikspeed}</div>
                 <div>Distance {this.state.distance}</div>
             </div>
+
+            <div><button onClick={ () => ipcRenderer.send("BLE_Restart") }>Restart Bluetooth</button></div>
             </div>
         );
     }

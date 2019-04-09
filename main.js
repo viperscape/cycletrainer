@@ -1,40 +1,28 @@
-const { spawn } = require('child_process');
-const BLE = spawn('support/BLE_App', []);
+const BLE = require("./ble")
 const url = require('url');
 const path = require('path');
 
 
-const { app, Menu, BrowserWindow } = require('electron');
-let Win = null;
-
-function createBLE()
-{
-    BLE.stdout.on('data', (data) => {
-        let d = JSON.parse(data.toString());
-        Win.webContents.send("data", d);
-    });
-
-    BLE.stderr.on('data', (data) => {
-        console.error(d);
-    });
-
-    BLE.on('exit', (code) => {
-        console.log(`Child exited with code ${code}`);
-    });
-    BLE.on('close', (code) => {
-        console.log(`Child exited with code ${code}`);
-    });
-}
-
+const { app, Menu, BrowserWindow, ipcMain } = require('electron');
+let Window = null;
+let Bluetooth = null;
 
 function createWindow() {
-    Win = new BrowserWindow({ width: 800, height: 600, icon: "favicon.ico" });
-    Win.webContents.openDevTools();
+    let win = new BrowserWindow({ width: 800, height: 600, icon: "favicon.ico" });
+    win.webContents.openDevTools();
 
-    Win.loadURL('http://localhost:3000');
+    win.loadURL('http://localhost:3000');
     //win.loadFile("/static/index.html");
+
     Menu.setApplicationMenu(null);
-    setTimeout(createBLE, 1000)
+
+    return win;
 }
 
-app.on('ready', createWindow);
+
+app.on('ready', () => {
+    Window = createWindow();
+    Bluetooth = new BLE(Window.webContents);
+    
+    ipcMain.on("BLE_Restart", () => { Bluetooth.Restart() });
+});
