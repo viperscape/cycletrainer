@@ -13,7 +13,7 @@ class Metrics extends Component {
         let self = this;
         this.props.bus.on("data", function(event, data) {
             let mass = 80; // kgs
-            let gradient = 0.0; // degrees
+            let gradient = 0.0; // degrees 
             data.bikespeed = CalcSpeed(9.80665, data.power, mass, gradient);
             let wheelsize = 668; // 700c
             let distance = (data.revs * wheelsize * Math.PI) * 0.000001; // kilometers
