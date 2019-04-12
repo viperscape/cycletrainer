@@ -16,9 +16,8 @@ class Metrics extends Component {
     }
 
 	CalcMetrics (_, data) {
-		let mass = this.props.weight; // kgs
 		let gradient = 0.0; // degrees 
-		data.bikespeed = CalcSpeed(9.80665, data.power, mass, gradient);
+		data.bikespeed = CalcSpeed(9.80665, data.power, this.props.weight, gradient);
 		let wheelsize = 668; // 700c
 		let distance = (data.revs * wheelsize * Math.PI) * 0.0000001; // kilometers
 		distance = distance.toFixed(2);
