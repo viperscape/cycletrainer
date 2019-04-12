@@ -7,7 +7,7 @@ class Metrics extends Component {
 		super(props);
 		
         this.state = {
-            power: null, speed: null, revs: null, 
+            power: -1, speed: 0, revs: 0, 
             bikespeed: 0, distance: 0 
 		};
 		
@@ -45,6 +45,7 @@ class Metrics extends Component {
 				</Container>
 				}
 				<Container>
+					<Row><Col>Metrics</Col></Row>
 					<Row><Col>Power</Col> <Col>
 						{this.state.power > 0 && this.state.power}
 						{this.state.power < 1 && "--"}
@@ -53,7 +54,7 @@ class Metrics extends Component {
 						{this.state.power > 0 && this.state.speed}
 						{this.state.power < 1 && "--"}
 						</Col></Row>
-					<Row><Col>Bike Speed</Col> <Col>{this.state.bikspeed}</Col></Row>
+					<Row><Col>Bike Speed</Col> <Col>{this.state.bikespeed}</Col></Row>
 					<Row><Col>Distance</Col> <Col>{this.state.distance}</Col></Row>
 				</Container>
 			</Container>
