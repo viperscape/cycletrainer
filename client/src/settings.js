@@ -11,9 +11,9 @@ class Settings extends Component {
         this.props.bus.on("data", this.Connected);
     }
 
-    Connected()
+    Connected(_, data)
     {
-        this.setState({ connected: true });
+        this.setState({ connected: data.connected });
     }
 
     Restart()

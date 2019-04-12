@@ -13,6 +13,7 @@ class BLE
         this.BLE = spawn('support/BLE_App', []);
 
         this.BLE.stdout.on('data', function (data) {
+            console.log(data.toString())
             let d = JSON.parse(data.toString());
             this.bus.send("data", d);
         }.bind(this));
