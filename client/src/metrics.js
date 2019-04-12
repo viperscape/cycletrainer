@@ -37,7 +37,7 @@ class Metrics extends Component {
     render() {
         return (
 			<Container>
-				{(this.state.power<0 || !this.state.power) && 
+				{this.state.power<0 && 
 				<Container>
 					<span>Finding Trainer... </span>
 					<Spinner animation="border" role="status">
