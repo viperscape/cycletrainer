@@ -45,7 +45,10 @@ class Metrics extends Component {
 				</Container>
 				}
 				<Container>
-					<Row><Col>Power</Col> <Col>{this.state.power}</Col></Row>
+					<Row><Col>Power</Col> <Col>
+						{this.state.power > 0 && this.state.power}
+						{this.state.power < 1 && "--"}
+						</Col></Row>
 					<Row><Col>Cadence</Col> <Col>
 						{this.state.power > 0 && this.state.speed}
 						{this.state.power < 1 && "--"}
