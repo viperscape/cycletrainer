@@ -2,7 +2,7 @@
 
 ## Smart Connected Bluetooth Cycle Trainer App
 
-![Cycle Trainer](cycle-trainer.gif)
+![Cycle Trainer](Cycle-Trainer.gif)
 
 ### Environment
 
