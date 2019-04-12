@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Button from 'react-bootstrap/Button';
 
 class Settings extends Component {
     constructor(props)
@@ -34,7 +35,7 @@ class Settings extends Component {
                     Connected to Trainer
                     <input type="checkbox" disabled={true} checked={this.state.connected}></input>
                 </div>
-                <button onClick={ () => this.Restart() }>Restart Bluetooth</button>
+                <Button onClick={ () => this.Restart() }>Restart Bluetooth</Button>
             </div>
         )
     }

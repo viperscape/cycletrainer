@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
+import Button from 'react-bootstrap/Button';
 
 import Metrics from "./metrics";
 import Settings from "./settings";
@@ -25,14 +26,14 @@ class App extends Component {
             <div className="App">
             {this.state.screen === Screens.Metrics &&
             <div>
-                <button onClick={this.setScreen} value="Settings">Settings</button>
+                <Button onClick={this.setScreen} value="Settings">Settings</Button>
                 <Metrics bus={ipcRenderer}/>
             </div>
             }
 
             {this.state.screen === Screens.Settings &&
             <div>
-                <button onClick={this.setScreen} value="Metrics">Back</button>
+                <Button onClick={this.setScreen} value="Metrics">Back</Button>
                 <Settings bus={ipcRenderer}/>
             </div>
             }
