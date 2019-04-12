@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Button, Container, Row, Col, Spinner } from 'react-bootstrap';
 
 class Metrics extends Component {
     constructor(props)
@@ -36,19 +37,21 @@ class Metrics extends Component {
 
     render() {
         return (
-			<div>
+			<Container>
 				{(this.state.power<0 || !this.state.power) && 
-					<div>
-						Finding Trainer
-					</div>
+				<Container>
+					<span>Finding Trainer... </span>
+					<Spinner animation="border" role="status">
+					</Spinner>
+				</Container>
 				}
-				<div>
-					<div>Power {this.state.power}</div>
-					<div>Cadence {this.state.speed}</div>
-					<div>Bike Speed {this.state.bikspeed}</div>
-					<div>Distance {this.state.distance}</div>
-				</div>
-			</div>
+				<Container>
+					<Row><Col>Power</Col> <Col>{this.state.power}</Col></Row>
+					<Row><Col>Cadence</Col> <Col>{this.state.speed}</Col></Row>
+					<Row><Col>Bike Speed</Col> <Col>{this.state.bikspeed}</Col></Row>
+					<Row><Col>Distance</Col> <Col>{this.state.distance}</Col></Row>
+				</Container>
+			</Container>
         )
     }
 }

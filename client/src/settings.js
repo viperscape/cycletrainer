@@ -33,7 +33,7 @@ class Settings extends Component {
             <Container>
                 <Row>
                     <Col>Connected to Trainer</Col>
-                    <Col xs={6}>
+                    <Col xs={5}>
                     <input type="checkbox" disabled={true} checked={this.state.connected}></input>
                     </Col>
                     

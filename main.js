@@ -9,7 +9,7 @@ let Bluetooth = null;
 
 function createWindow() {
     let win = new BrowserWindow({ width: 800, height: 600, icon: "favicon.ico" });
-    win.webContents.openDevTools();
+    //win.webContents.openDevTools();
 
     win.loadURL('http://localhost:3000');
     //win.loadFile("/static/index.html");
