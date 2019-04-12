@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Button from 'react-bootstrap/Button';
+import { Button, Container, Row, Col } from 'react-bootstrap';
 
 class Settings extends Component {
     constructor(props)
@@ -30,13 +30,20 @@ class Settings extends Component {
 
     render() {
         return (
-            <div>
-                <div>
-                    Connected to Trainer
+            <Container>
+                <Row>
+                    <Col>Connected to Trainer</Col>
+                    <Col xs={6}>
                     <input type="checkbox" disabled={true} checked={this.state.connected}></input>
-                </div>
-                <Button onClick={ () => this.Restart() }>Restart Bluetooth</Button>
-            </div>
+                    </Col>
+                    
+                    <Col>
+                    <Button variant="dark" onClick={ () => this.Restart() }>
+                        Restart Bluetooth
+                    </Button>
+                    </Col>
+                </Row>
+            </Container>
         )
     }
 }
