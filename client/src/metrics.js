@@ -45,7 +45,7 @@ class Metrics extends Component {
 				</Container>
 				}
 				<Container>
-					<Row><Col>Metrics</Col></Row>
+					<Row><Col><h3>Metrics</h3></Col></Row>
 					<Row><Col>Power</Col> <Col>
 						{this.state.power > 0 && this.state.power}
 						{this.state.power < 1 && "--"}
