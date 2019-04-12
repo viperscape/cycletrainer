@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Button, Container, Row, Col, Spinner } from 'react-bootstrap';
+import { Container, Row, Col, Spinner } from 'react-bootstrap';
 
 class Metrics extends Component {
     constructor(props)
@@ -16,7 +16,7 @@ class Metrics extends Component {
     }
 
 	CalcMetrics (_, data) {
-		let mass = 80; // kgs
+		let mass = this.props.weight; // kgs
 		let gradient = 0.0; // degrees 
 		data.bikespeed = CalcSpeed(9.80665, data.power, mass, gradient);
 		let wheelsize = 668; // 700c

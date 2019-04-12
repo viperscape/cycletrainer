@@ -12,8 +12,10 @@ const Screens = { Metrics: 0, Settings: 1 };
 class App extends Component {
     constructor(props) {
         super(props);
-        this.state = { screen: Screens.Metrics };
+        this.state = { screen: Screens.Settings, metrics: { weight: 80 } };
         this.setScreen = this.setScreen.bind(this);
+
+        this.set_metrics = (d) => this.setState({ metrics: d });
     }
 
     setScreen(e)
@@ -28,14 +30,14 @@ class App extends Component {
             {this.state.screen === Screens.Metrics &&
             <div>
                 <Button className="Settings-Button" variant="secondary" onClick={this.setScreen} value="Settings">Settings</Button>
-                <Metrics bus={ipcRenderer}/>
+                <Metrics bus={ipcRenderer} metrics={this.state.metrics}/>
             </div>
             }
 
             {this.state.screen === Screens.Settings &&
             <div>
                 <Button onClick={this.setScreen} value="Metrics">Back</Button>
-                <Settings bus={ipcRenderer}/>
+                <Settings bus={ipcRenderer} set={this.set_metrics}/>
             </div>
             }
 
