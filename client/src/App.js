@@ -12,7 +12,7 @@ const Screens = { Metrics: 0, Settings: 1 };
 class App extends Component {
     constructor(props) {
         super(props);
-        this.state = { screen: Screens.Settings, metrics: { weight: 80 } };
+        this.state = { screen: Screens.Metrics, metrics: { weight: 80 } };
         this.setScreen = this.setScreen.bind(this);
 
         this.set_metrics = (d) => this.setState({ metrics: d });
