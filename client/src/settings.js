@@ -31,8 +31,8 @@ class Settings extends Component {
 
     render() {
         return (
-            <Container>
-                <Row>
+            <Container style={{"margin-top": "60px"}}>
+                <Row className="Settings">
                     <Col>Connected to Trainer</Col>
                     <Col xs={5}>
                     <input type="checkbox" disabled={true} checked={this.state.connected}></input>
@@ -44,7 +44,7 @@ class Settings extends Component {
                     </Button>
                     </Col>
                 </Row>
-                <Row>
+                <Row className="Settings">
                     <Col>Set Weight (Kgs)</Col>
                     <Col xs={4}>
                     <input ref={this.weight} type="number" defaultValue="80"

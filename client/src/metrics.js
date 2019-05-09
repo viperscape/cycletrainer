@@ -38,24 +38,24 @@ class Metrics extends Component {
         return (
 			<Container>
 				{this.state.power<0 && 
-				<Container>
-					<span>Finding Trainer... </span>
+				<Container className="Header">
+					<span className="Searching">Finding Trainer...</span>
 					<Spinner animation="border" role="status">
 					</Spinner>
 				</Container>
 				}
 				<Container>
-					<Row><Col><h3>Metrics</h3></Col></Row>
-					<Row><Col>Power</Col> <Col>
+					<Row className="Metrics-Header"><Col md={3}><h2>Metrics</h2></Col></Row>
+					<Row><Col className="Metrics-Desc">Power</Col> <Col className="Metrics">
 						{this.state.power > 0 && this.state.power}
 						{this.state.power < 1 && "--"}
-						</Col></Row>
-					<Row><Col>Cadence</Col> <Col>
+						</Col>
+						<Col className="Metrics-Desc">Cadence</Col> <Col className="Metrics">
 						{this.state.power > 0 && this.state.speed}
 						{this.state.power < 1 && "--"}
 						</Col></Row>
-					<Row><Col>Bike Speed</Col> <Col>{this.state.bikespeed}</Col></Row>
-					<Row><Col>Distance</Col> <Col>{this.state.distance}</Col></Row>
+					<Row><Col className="Metrics-Desc">Bike Speed</Col> <Col className="Metrics">{this.state.bikespeed}</Col>
+						<Col className="Metrics-Desc">Distance</Col> <Col className="Metrics">{this.state.distance}</Col></Row>
 				</Container>
 			</Container>
         )

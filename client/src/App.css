@@ -7,6 +7,43 @@ html {
   padding: 4px;
 }
 
+.Header {
+  margin-left: -40px;
+  height: 40px;
+}
+
+.Searching {
+  padding-right: 40px;
+}
+
+.Metrics {
+  font-family: 'digital-clock-font';
+  font-size: 120px;
+}
+
+.Metrics-Desc {
+  font-size: 24px;
+  justify-content: center;
+  padding-top: 70px;
+}
+
+.Metrics-Header {
+  justify-content: center;
+  padding-top: 30px;
+  margin-bottom: -10px;
+}
+
+.Settings {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
 .Settings-Button {
   float:right;
+  margin-right: 2px;
+}
+
+@font-face{
+  font-family:'digital-clock-font';
+  src: url('digital-7_mono.ttf');
 }

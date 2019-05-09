@@ -26,7 +26,7 @@ class App extends Component {
     render() {
         return (
             <div className="App">
-            <Container>
+            
             {this.state.screen === Screens.Metrics &&
             <div>
                 <Button className="Settings-Button" variant="secondary" onClick={this.setScreen} value="Settings">Settings</Button>
@@ -34,6 +34,7 @@ class App extends Component {
             </div>
             }
 
+            <Container>
             {this.state.screen === Screens.Settings &&
             <div>
                 <Button onClick={this.setScreen} value="Metrics">Back</Button>
